@@ -32,7 +32,7 @@ function parse(id) {
   }
 
   if (checkBit && generateCheckBit(id) !== checkBit) {
-    throw new Error('Citizen identification number is invalid')
+    throw new Error(`Invalid Citizen identification number`)
   }
 
   return [toDateIndex(birthDateString), regionCode + orderNumber]

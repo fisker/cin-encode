@@ -22,12 +22,17 @@ function toDate(index) {
 }
 
 function validate(string) {
+  if (string.length !== 8) {
+    return false
+  }
+
   const year = Number(string.slice(0, 4))
   const month = Number(string.slice(4, 6))
   const date = Number(string.slice(6, 8))
   const time = new Date(Date.UTC(year, month - 1, date, 0, 0, 0, 0))
 
   if (
+    time < START_DATE ||
     time.getFullYear() !== year ||
     time.getMonth() + 1 !== month ||
     time.getDate() !== date

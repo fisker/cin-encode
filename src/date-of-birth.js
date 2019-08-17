@@ -1,18 +1,21 @@
 import padStart from './pad-start'
 
-const START_DATE = new Date(Date.UTC(1900, 0, 1, 0, 0, 0, 0))
+const START_DATE = UTCDate(1900, 1, 1)
 const MILLISECONDS_PRE_DAY = 1000 * 60 * 60 * 24
+
+function UTCDate(year, month, date) {
+  return new Date(Date.UTC(year, month - 1, date, 0, 0, 0, 0))
+}
 
 function toIndex(string) {
   const year = Number(string.slice(0, 4))
   const month = Number(string.slice(4, 6))
   const date = Number(string.slice(6, 8))
-  const time = new Date(Date.UTC(year, month - 1, date, 0, 0, 0, 0))
-
+  const time = UTCDate(year, month, date)
   return (time - START_DATE) / MILLISECONDS_PRE_DAY
 }
 
-function toDate(index) {
+function toString(index) {
   const time = new Date(Number(START_DATE) + MILLISECONDS_PRE_DAY * index)
   const year = padStart(time.getFullYear(), 4)
   const month = padStart(time.getMonth() + 1, 2)
@@ -29,7 +32,7 @@ function validate(string) {
   const year = Number(string.slice(0, 4))
   const month = Number(string.slice(4, 6))
   const date = Number(string.slice(6, 8))
-  const time = new Date(Date.UTC(year, month - 1, date, 0, 0, 0, 0))
+  const time = UTCDate(year, month, date)
 
   if (
     time < START_DATE ||
@@ -39,7 +42,8 @@ function validate(string) {
   ) {
     return false
   }
+
   return true
 }
 
-export {toIndex, toDate, validate}
+export {toIndex, toString, validate}

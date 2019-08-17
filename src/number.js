@@ -1,5 +1,5 @@
-const CHARSET =
-  'fiskerabcdghjlmnopqtuvwxyz0123456789FISKERABCDGHJLMNOPQTUVWXYZ_-*!'
+import {NUMBER_ENCODE_CHARSET as CHARSET} from './constants'
+
 const CHAR_VALUES = {}
 const BASE = CHARSET.length
 
@@ -34,16 +34,6 @@ function decode(string) {
   return number
 }
 
-function getMinimumLength(numberLength) {
-  const maximum = 10 ** numberLength
-  let exponent = 1
-  while (BASE ** exponent < maximum) {
-    exponent += 1
-  }
-
-  return exponent
-}
-
 const ZERO_VALUE_CHR = CHARSET[0]
 
-export {encode, decode, getMinimumLength, ZERO_VALUE_CHR as ZERO}
+export {encode, decode, ZERO_VALUE_CHR as ZERO}

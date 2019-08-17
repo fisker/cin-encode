@@ -1,27 +1,31 @@
 import {decode as numberDecode} from './number'
-import {toDate as toBirthdate, validate as validateBirthdate} from './birthdate'
+import {
+  toString as toDateString,
+  validate as validateDateString,
+} from './date-of-birth'
 import {REST_LENGTH, MINIMUM_REST_ENCODED_LENGTH} from './constants'
 import padStart from './pad-start'
-import generateCheckBit from './generate-check-bit'
+import {generate as checksum} from './checksum'
 
 function decode(string) {
   if (typeof string !== 'string') {
     throw new TypeError('input should be a string')
   }
 
-  const restEncoded = string.slice(-MINIMUM_REST_ENCODED_LENGTH)
-  const birthdateIndexEncoded = string.slice(0, -restEncoded.length)
+  const encodedRest = string.slice(-MINIMUM_REST_ENCODED_LENGTH)
+  const encodedDateIndex = string.slice(0, -encodedRest.length)
+  const dateIndex = numberDecode(encodedDateIndex)
+  const dateString = toDateString(dateIndex)
 
-  const birthdateString = toBirthdate(numberDecode(birthdateIndexEncoded))
-
-  if (!validateBirthdate(birthdateString)) {
+  if (!validateDateString(dateString)) {
     throw new Error('input is not a encoded Citizen identification number')
   }
-  const rest = padStart(numberDecode(restEncoded), REST_LENGTH, '0')
 
-  const parts = rest.slice(0, 6) + birthdateString + rest.slice(6)
+  const restString = padStart(numberDecode(encodedRest), REST_LENGTH, '0')
 
-  return parts + generateCheckBit(parts)
+  const parts = restString.slice(0, 6) + dateString + restString.slice(6)
+
+  return parts + checksum(parts)
 }
 
 export default decode

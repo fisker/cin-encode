@@ -1,14 +1,8 @@
-const NUMBER_ENCODE_CHARSET =
-  'fiskerabcdghjlmnopqtuvwxyz0123456789FISKERABCDGHJLMNOPQTUVWXYZ_-*!'
+import {BASE} from './number'
+
 const REST_LENGTH = 9
-const MINIMUM_REST_ENCODED_LENGTH = (function getMinimumLength(numberLength) {
-  const maximum = 10 ** numberLength
-  let exponent = 1
-  while (NUMBER_ENCODE_CHARSET.length ** exponent < maximum) {
-    exponent += 1
-  }
+const MINIMUM_REST_ENCODED_LENGTH = Math.ceil(
+  Math.log(10 ** REST_LENGTH) / Math.log(BASE)
+)
 
-  return exponent
-})(9)
-
-export {REST_LENGTH, MINIMUM_REST_ENCODED_LENGTH, NUMBER_ENCODE_CHARSET}
+export {REST_LENGTH, MINIMUM_REST_ENCODED_LENGTH, BASE}

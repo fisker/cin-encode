@@ -11,7 +11,7 @@ test('smallest id number', t => {
 
 test('bigest id number', t => {
   const id = '999999999912319992'
-  const result = 'gthlOGu1d'
+  const result = 'K5E~JA6cS'
 
   t.is(encode(id), result)
   t.is(decode(result), id)

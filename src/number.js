@@ -1,10 +1,15 @@
-import {NUMBER_ENCODE_CHARSET as CHARSET} from './constants'
+// All url friendly charachters
+// Array.from({length: 128}, (_, i) => String.fromCharCode(i)).filter(x => x === encodeURIComponent(x))
+// !'()*-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~
+
+const BASE_CHARS =
+  'fisker!FISKER~0123456789-abcdghjlmnopqtuvwxyz*ABCDGHJLMNOPQTUVWXYZ'
+const BASE = BASE_CHARS.length
 
 const CHAR_VALUES = {}
-const BASE = CHARSET.length
 
 for (let index = 0; index < BASE; index += 1) {
-  const chr = CHARSET[index]
+  const chr = BASE_CHARS[index]
   CHAR_VALUES[chr] = index
 }
 
@@ -13,7 +18,7 @@ function encode(number) {
 
   do {
     const value = number % BASE
-    string = CHARSET[value] + string
+    string = BASE_CHARS[value] + string
     number = (number - value) / BASE
   } while (number > 0)
 
@@ -34,6 +39,6 @@ function decode(string) {
   return number
 }
 
-const ZERO_VALUE_CHR = CHARSET[0]
+const ZERO_VALUE_CHR = BASE_CHARS[0]
 
-export {encode, decode, ZERO_VALUE_CHR as ZERO}
+export {encode, decode, ZERO_VALUE_CHR as ZERO, BASE}

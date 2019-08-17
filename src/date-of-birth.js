@@ -4,7 +4,7 @@ const START_DATE = UTCDate(1900, 1, 1)
 const MILLISECONDS_PRE_DAY = 1000 * 60 * 60 * 24
 
 function UTCDate(year, month, date) {
-  return new Date(Date.UTC(year, month - 1, date, 0, 0, 0, 0))
+  return Date.UTC(year, month - 1, date, 0, 0, 0, 0)
 }
 
 function toIndex(string) {
@@ -32,10 +32,11 @@ function validate(string) {
   const year = Number(string.slice(0, 4))
   const month = Number(string.slice(4, 6))
   const date = Number(string.slice(6, 8))
-  const time = UTCDate(year, month, date)
+  const timestamp = UTCDate(year, month, date)
+  const time = new Date(timestamp)
 
   if (
-    time < START_DATE ||
+    timestamp < START_DATE ||
     time.getFullYear() !== year ||
     time.getMonth() + 1 !== month ||
     time.getDate() !== date

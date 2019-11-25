@@ -4,7 +4,7 @@ const build = {
   input: 'src/index.js',
   output: [
     {
-      file: 'lib/index.js',
+      file: 'dist/index.js',
       format: 'umd',
       name: 'CINEncode',
     },
@@ -15,7 +15,7 @@ const buildMinified = {
   input: 'src/index.js',
   output: [
     {
-      file: 'lib/index.min.js',
+      file: 'dist/index.min.js',
       format: 'umd',
       name: 'CINEncode',
     },

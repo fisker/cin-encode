@@ -8,7 +8,9 @@
     "email": "lionkay@gmail.com",
     "url": "https://www.fiskercheung.com/"
   },
-  "files": [],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "main": "index.js",
   "scripts": {

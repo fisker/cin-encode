@@ -31,7 +31,7 @@
     "lint:package-json": "yarn run format:package-json --check",
     "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check",
     "test": "ava",
-    "test-coverage": "nyc ava"
+    "test-coverage": "nyc yarn test"
   },
   "config": {
     "commitizen": {
@@ -39,19 +39,19 @@
     }
   },
   "ava": {
-    "require": "esm",
+    "require": [
+      "esm"
+    ],
     "verbose": true
   },
   "nyc": {
-    "all": true,
     "include": [
       "src/**"
     ],
     "reporter": [
       "lcov",
       "text"
-    ],
-    "require": "esm"
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.4",

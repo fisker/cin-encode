@@ -19,7 +19,7 @@ function parse(id) {
     orderCode = id.slice(12, 15)
   } else if (length === 18) {
     if (!checksumValidate(id)) {
-      throw new Error(`Invalid Citizen identification number`)
+      throw new Error('Invalid Citizen identification number')
     }
     dateString = id.slice(6, 14)
     orderCode = id.slice(14, 17)

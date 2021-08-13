@@ -1,4 +1,4 @@
-import {BASE} from './number'
+import {BASE} from './number.js'
 
 const REST_LENGTH = 9
 const MINIMUM_REST_ENCODED_LENGTH = Math.ceil(

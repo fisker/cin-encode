@@ -1,4 +1,4 @@
-import padStart from './pad-start'
+import padStart from './pad-start.js'
 
 const START_DATE = UTCDate(1900, 1, 1)
 const MILLISECONDS_PRE_DAY = 1000 * 60 * 60 * 24

@@ -1,8 +1,8 @@
 import {
   validate as validateDateString,
   toIndex as toDateIndex,
-} from './date-of-birth'
-import {validate as checksumValidate} from './checksum'
+} from './date-of-birth.js'
+import {validate as checksumValidate} from './checksum.js'
 
 function parse(id) {
   if (typeof id !== 'string') {

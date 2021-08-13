@@ -8,6 +8,7 @@ const pad = (string, targetLength, padString = '0') => {
   }
 
   const padLength = targetLength - string.length
+  // eslint-disable-next-line unicorn/no-new-array
   return new Array(padLength + 1).join(padString) + string
 }
 

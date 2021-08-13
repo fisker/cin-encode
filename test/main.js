@@ -1,5 +1,5 @@
 import test from 'ava'
-import {encode, decode} from '../src'
+import {encode, decode} from '../src/index.js'
 
 test('smallest id number', (t) => {
   const id = '000000190001010009'

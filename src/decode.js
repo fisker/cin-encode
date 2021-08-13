@@ -1,11 +1,11 @@
-import {decode as numberDecode} from './number'
+import {decode as numberDecode} from './number.js'
 import {
   toString as toDateString,
   validate as validateDateString,
-} from './date-of-birth'
-import {REST_LENGTH, MINIMUM_REST_ENCODED_LENGTH} from './constants'
-import padStart from './pad-start'
-import {generate as checksum} from './checksum'
+} from './date-of-birth.js'
+import {REST_LENGTH, MINIMUM_REST_ENCODED_LENGTH} from './constants.js'
+import padStart from './pad-start.js'
+import {generate as checksum} from './checksum.js'
 
 function decode(string) {
   if (typeof string !== 'string') {

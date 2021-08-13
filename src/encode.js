@@ -1,8 +1,8 @@
-import {encode as numberEncode, ZERO as ZERO_VALUE_CHR} from './number'
-import parser from './parser'
-import trimStart from './trim-start'
-import padStart from './pad-start'
-import {MINIMUM_REST_ENCODED_LENGTH} from './constants'
+import {encode as numberEncode, ZERO as ZERO_VALUE_CHR} from './number.js'
+import parser from './parser.js'
+import trimStart from './trim-start.js'
+import padStart from './pad-start.js'
+import {MINIMUM_REST_ENCODED_LENGTH} from './constants.js'
 
 function encode(id) {
   const [dateIndex, restString] = parser(id)

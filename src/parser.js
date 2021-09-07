@@ -29,7 +29,7 @@ function parse(id) {
 
   if (!validateDateString(dateString)) {
     throw new RangeError(
-      'Citizen identification number should contain validate date of birth'
+      'Citizen identification number should contain validate date of birth',
     )
   }
 

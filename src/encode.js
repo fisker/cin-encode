@@ -10,7 +10,7 @@ function encode(id) {
   const encodedRestString = padStart(
     numberEncode(restString),
     MINIMUM_REST_ENCODED_LENGTH,
-    ZERO_VALUE_CHR
+    ZERO_VALUE_CHR,
   )
 
   return trimStart(encodedDateIndex + encodedRestString, ZERO_VALUE_CHR)

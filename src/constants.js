@@ -6,3 +6,4 @@ const MINIMUM_REST_ENCODED_LENGTH = Math.ceil(
 )
 
 export {REST_LENGTH, MINIMUM_REST_ENCODED_LENGTH, BASE}
+export {BASE} from './number.js'
